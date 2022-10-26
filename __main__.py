@@ -21,8 +21,7 @@ def fix_text(text):
     return text
 
 def get_proxy():
-
-    # retrieve latest proxies
+    """Get a random proxy IP address from sslproxies.org"""
     proxies_req = urllib.request.Request('https://www.sslproxies.org/')
     ua = UserAgent()
     proxies_req.add_header('User-Agent', ua.random)
@@ -53,7 +52,7 @@ def get_proxy():
 def text_to_speech():
     """Create a Google Text-to-Speech MP3 file using a proxy IP address"""
     rando_proxy = get_proxy()
-    print(f"\n\nrandom proxy: '{rando_proxy}'")
+    print(f"\nrandom proxy: '{rando_proxy}'")
 
     # set random proxy IP and port as the OS environment
     os.environ["http_proxy"] = f"http://{rando_proxy}"
